@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
 @dataclass
-class DataIngestionConfig:
+class DataIngestionConfig:                  #giving input to the data ingestion component
     train_data_path: str = os.path.join('artifacts', 'train.csv')  # where the training split will be saved
     test_data_path: str = os.path.join('artifacts', 'test.csv')    # where the test split will be saved
     raw_data_path: str = os.path.join('artifacts', 'data.csv')     # a copy of the original/raw dataset
@@ -50,3 +50,9 @@ class DataIngestion:
             logging.error("Error occurred during data ingestion")
             # Wrap the caught exception in `CustomException` to include traceback details
             raise CustomException(e, sys)
+        
+if __name__ == "__main__":
+    obj = DataIngestion()
+    train_data, test_data = obj.initiate_data_ingestion()   
+    print(f"Train data path: {train_data}\nTest data path: {test_data}")
+               

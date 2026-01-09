@@ -103,7 +103,7 @@ class DataTransformation:
 
             save_objec(
                 file_path=self.data_transformation_config.preprocessor_obj_file_path,
-                obj=preprocessor_obj
+                object=preprocessor_obj
             )
 
             return (
@@ -116,9 +116,3 @@ class DataTransformation:
             logging.error("Error in initiate_data_transformation")
             raise CustomException(e, sys)
 
-
-if __name__ == "__main__":
-    data_transformation = DataTransformation()
-    train_path = os.path.join('artifacts', 'train.csv')
-    test_path = os.path.join('artifacts', 'test.csv')
-    data_transformation.initiate_data_transformation(train_path, test_path) 
